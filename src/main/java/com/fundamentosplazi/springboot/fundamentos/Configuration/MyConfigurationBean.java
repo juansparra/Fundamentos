@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fundamentosplazi.springboot.fundamentosBean.MyBean;
 import com.fundamentosplazi.springboot.fundamentosBean.MyBean2Implement;
-import com.fundamentosplazi.springboot.fundamentosBean.MyBeanImplement;
 import com.fundamentosplazi.springboot.fundamentosBean.MyBeanWithDependency;
 import com.fundamentosplazi.springboot.fundamentosBean.MyBeanWithDependencyImplement;
 import com.fundamentosplazi.springboot.fundamentosBean.MyOperation;

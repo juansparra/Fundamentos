@@ -7,12 +7,14 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import com.fundamentosplazi.springboot.fundamentos.pojo.UserPojo;
 import com.fundamentosplazi.springboot.fundamentosBean.MyBeanWithProperties;
 import com.fundamentosplazi.springboot.fundamentosBean.MyBeanWithPropertiesImplements;
 
 @Configuration
+@PropertySource("classpath:connection.properties")
 @EnableConfigurationProperties(UserPojo.class)
 public class GeneralConfiguration {
 @Value("${value.name}")
@@ -24,6 +26,17 @@ private String apellido;
 @Value("${value.random}")
 private String random;
 
+@Value("${jdbc.url}")
+private String jdbcUrl;
+
+@Value("${driver}")
+private String driver;
+
+@Value("${username}")
+private String username;
+
+@Value("${password}")
+private String password;
 @Bean
 public MyBeanWithProperties function() {
 	return new MyBeanWithPropertiesImplements(name,apellido, random);
@@ -33,10 +46,10 @@ public MyBeanWithProperties function() {
 public DataSource dataSource() {
 	
 	DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-	dataSourceBuilder.driverClassName("org.h2.Driver");
-	dataSourceBuilder.url("jdbc:h2:mem:testdb");
-	dataSourceBuilder.username("SA");
-	dataSourceBuilder.password("");
+	dataSourceBuilder.driverClassName(driver);
+	dataSourceBuilder.url(jdbcUrl);
+	dataSourceBuilder.username(username);
+	dataSourceBuilder.password(password);
 	
 	return dataSourceBuilder.build();
 	

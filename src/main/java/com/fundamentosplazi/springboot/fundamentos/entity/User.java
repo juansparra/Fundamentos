@@ -26,10 +26,10 @@ public class User {
 	
 	@Column (length = 50)
 	private String name;
-	@Column (length = 50)
+	@Column (length = 50, unique=true)
 	private String email;
 	@Column
-	private LocalDate birtDate;
+	private LocalDate BirthDate;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonManagedReference
@@ -41,11 +41,11 @@ public class User {
 		super();
 	}
 
-	public User(String name, String email, LocalDate birtDate) {
+	public User(String name, String email, LocalDate BirthDate) {
 		super();
 		this.name = name;
 		this.email = email;
-		this.birtDate = birtDate;
+		this.BirthDate = BirthDate;
 	}
 
 	public Long getId() {
@@ -72,12 +72,12 @@ public class User {
 		this.email = email;
 	}
 
-	public LocalDate getBirtDate() {
-		return birtDate;
+	public LocalDate getBirthDate() {
+		return BirthDate;
 	}
 
-	public void setBirtDate(LocalDate birtDate) {
-		this.birtDate = birtDate;
+	public void setBirthDate(LocalDate BirthDate) {
+		this.BirthDate = BirthDate;
 	}
 
 	public List<Post> getPosts() {
@@ -90,7 +90,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birtDate=" + birtDate + ", posts=" + posts
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", BirthDate=" + BirthDate + ", posts=" + posts
 				+ "]";
 	}
 	

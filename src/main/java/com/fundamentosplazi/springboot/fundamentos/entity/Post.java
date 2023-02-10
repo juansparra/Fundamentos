@@ -1,5 +1,7 @@
 package com.fundamentosplazi.springboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ public class Post {
 	@Column (name="descripcion", length = 255)
 	private String Descripcion;
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	public Post() {
 		super();
